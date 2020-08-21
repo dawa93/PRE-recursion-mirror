@@ -10,17 +10,17 @@ var stringifiableObjects = [
   ["hi"],
   [8, "hi"],
   [1, 0, -1, -0.3, 0.3, 1343.32, 3345, 0.00011999999999999999],
-  [8, [[],3,4]],
+  [8, [[], 3, 4]],
   [[[["foo"]]]],
   {},
-  {"a": "apple"},
-  {"foo": true, "bar": false, "baz": null},
-  {"boolean, true": true, "boolean, false": false, "null": null },
+  { a: "apple" },
+  { foo: true, bar: false, baz: null },
+  { "boolean, true": true, "boolean, false": false, null: null },
   // basic nesting
-  {"a":{"b":"c"}},
-  {"a":["b", "c"]},
-  [{"a":"b"}, {"c":"d"}],
-  {"a":[],"c": {}, "b": true}
+  { a: { b: "c" } },
+  { a: ["b", "c"] },
+  [{ a: "b" }, { c: "d" }],
+  { a: [], c: {}, b: true }
 ];
 
 // 여러분이 구현한 stringifyJSON을 테스트 하는데 사용됩니다.
@@ -28,23 +28,23 @@ var stringifiableObjects = [
 // 따라서 여러분들은 아래의 key, value 쌍들을 stringfy하지 않도록 해야합니다.
 var unstringifiableValues = [
   {
-    'functions': function(){},
-    'undefined': undefined
+    functions: function() {},
+    undefined: undefined
   }
 ];
 
- // used for parseJSON specs
+// used for parseJSON specs
 var parseableStrings = [
   // basic stuff
-  '[]',
+  "[]",
   '{"foo": ""}',
-  '{}',
+  "{}",
   '{"foo": "bar"}',
   '["one", "two"]',
   '{"a": "b", "c": "d"}',
-  '[null,false,true]',
+  "[null,false,true]",
   '{"foo": true, "bar": false, "baz": null}',
-  '[1, 0, -1, -0.3, 0.3, 1343.32, 3345, 0.00011999999999999999]',
+  "[1, 0, -1, -0.3, 0.3, 1343.32, 3345, 0.00011999999999999999]",
   '{"boolean, true": true, "boolean, false": false, "null": null }',
 
   // basic nesting
@@ -56,7 +56,7 @@ var parseableStrings = [
 
   // escaping
   '["\\\\\\"\\"a\\""]',
-  '["and you can\'t escape thi\s"]',
+  '["and you can\'t escape this"]',
 
   // everything all at once
   '{"CoreletAPIVersion":2,"CoreletType":"standalone",' +
@@ -93,7 +93,7 @@ var parseableStrings = [
     ' "10021" }, "phoneNumber": [ { "type" : "home", ' +
     '"number": "212 555-1234" }, { "type" : "fax", ' +
     '"number": "646 555-4567" } ] }',
-  '{\r\n' +
+  "{\r\n" +
     '          "glossary": {\n' +
     '              "title": "example glossary",\n\r' +
     '      \t\t"GlossDiv": {\r\n' +
@@ -110,17 +110,14 @@ var parseableStrings = [
     '                              "para": "A meta-markup language,' +
     ' used to create markup languages such as DocBook.",\r\n' +
     '      \t\t\t\t\t\t"GlossSeeAlso": ["GML", "XML"]\r\n' +
-    '                          },\r\n' +
+    "                          },\r\n" +
     '      \t\t\t\t\t"GlossSee": "markup"\r\n' +
-    '                      }\r\n' +
-    '                  }\r\n' +
-    '              }\r\n' +
-    '          }\r\n' +
-    '      }\r\n'
+    "                      }\r\n" +
+    "                  }\r\n" +
+    "              }\r\n" +
+    "          }\r\n" +
+    "      }\r\n"
 ];
 
 // JSON does not allow you to parse these strings
-var unparseableStrings = [
-    '["foo", "bar"',
-    '["foo", "bar\\"]'
-];
+var unparseableStrings = ['["foo", "bar"', '["foo", "bar\\"]'];
